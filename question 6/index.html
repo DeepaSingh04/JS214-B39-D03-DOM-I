@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Select</title>
+</head>
+<body>
+    <h1>Select an Animal</h1>
+    <!-- Dropdown menu for selecting animals -->
+    <select id="animalSelect">
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="elephant">Elephant</option>
+        <option value="lion">Lion</option>
+    </select>
+
+    <!-- Image tag to display the selected animal -->
+    <img id="animalImage" src="https://upload.wikimedia.org/wikipedia/commons/1/18/Dog_Breeds.jpg" alt="Animal" width="300">
+
+    <script>
+        // Function to change the image based on the selected animal
+        document.getElementById("animalSelect").addEventListener("change", function() {
+            var animal = this.value;
+            var image = document.getElementById("animalImage");
+            image.src = animal + ".jpg"; // Set the image src based on the selected animal
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .buttons button {
+            margin: 5px;
+        }
+
+        #substringInput {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <textarea id="textInput" placeholder="Enter text here..."></textarea>
+        <div class="buttons">
+            <button id="wordCountBtn">Count Words</button>
+            <button id="toLowerCaseBtn">Lower Case</button>
+            <button id="toUpperCaseBtn">Upper Case</button>
+            <button id="checkSubstringBtn">Check Substring</button>
+        </div>
+        <input type="text" id="substringInput" placeholder="Enter substring to check">
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const textInput = document.getElementById('textInput');
+        const result = document.getElementById('result');
+
+        const wordCount = () => {
+            const words = textInput.value.trim().split(/\s+/);
+            result.innerText = `Word Count: ${words.length}`;
+        };
+
+        const toLowerCase = () => {
+            textInput.value = textInput.value.toLowerCase();
+            result.innerText = 'Converted to Lower Case';
+        };
+
+        const toUpperCase = () => {
+            textInput.value = textInput.value.toUpperCase();
+            result.innerText = 'Converted to Upper Case';
+        };
+
+        const checkSubstring = () => {
+            const substring = document.getElementById('substringInput').value;
+            const contains = textInput.value.includes(substring);
+            result.innerText = contains ? `Contains "${substring}"` : `Does not contain "${substring}"`;
+        };
+
+        const handleEvent = (btn, func) => {
+            btn.addEventListener('click', func);
+        };
+
+        handleEvent(document.getElementById('wordCountBtn'), wordCount);
+        handleEvent(document.getElementById('toLowerCaseBtn'), toLowerCase);
+        handleEvent(document.getElementById('toUpperCaseBtn'), toUpperCase);
+        handleEvent(document.getElementById('checkSubstringBtn'), checkSubstring);
+    </script>
+</body>
+</html>
